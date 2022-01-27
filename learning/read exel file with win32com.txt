@@ -1,0 +1,113 @@
+https://pythonexcels.com/python/2009/10/05/python-excel-mini-cookbook
+
+
+# How to read exel file with win32com
+# This code will help you to read, write and save exiting excel.
+
+import win32com.client
+from win32com.client import Dispatch
+
+xl = win32com.client.Dispatch('Excel.Application')
+wb = xl.Workbooks.Open("C:\\Users\\XYZ\\Documents\\Sample.xlsx")
+
+#Get number of sheets in excel document
+getNumSheet = wb.Worksheets.count
+print 'Number of sheets : ',getNumSheet
+
+#Get name of active sheet 
+getSheetName = wb.Activesheet.Name
+print 'Active sheet name : ',getSheetName
+
+#read all the cells of active sheet as instance
+readData = wb.Worksheets('Data')
+allData = readData.UsedRange
+print 'Data on selected sheet : ',allData
+
+#Getting List of Sheets
+for sheet in wb.Sheets:
+    print(sheet.name)
+
+
+# Get number of rows used on active sheet
+getNumRows = allData.Rows.Count
+print 'Number of rows used in sheet : ',getNumRows
+
+#Get number of columns used on active sheet
+getNumCols = allData.Columns.Count
+print 'Number of columns used in sheet : ',getNumCols
+
+# Read specific cell on active sheet
+readCell = allData.Cells(1,2)
+print 'Data on specific cell : ',readCell
+
+# Write on empty cell of active sheet
+writeData = wb.Worksheets('Data')
+writeData.Cells(2,2).Value = 'Cell B2'
+
+# Overwrite on cell of active sheet
+writeData.Cells(3,2).Value = ''
+
+# Add color to sheet name and background
+sheet = wb.Worksheets.Item('Data')
+sheet.Tab.Color = 255
+
+# Save excel doc
+wb.Save()
+# Save As current excel doc
+#wb.SaveAs('updatedSample.xlsx')
+
+wb.Close()
+xl.Quit()
+xl = None
+
+
+
+
+
+Insert Row -->  expform_ws.Range("Total").Offset(-1, 0).EntireRow.Insert
+Delete row -->  fs.UsedRange.Offset(2).Columns(5).SpecialCells(4).EntireRow.Delete()
+			OR BELOW CODE
+		for i in range(lastrow, 2, -1):
+    		  if fs.Cells(i,5).Value != ""
+                     fs.Rows(i).EntireRow.Delete() 
+      
+backcolor cell
+specific color cell
+read cell color
+fill cell color
+
+
+# Rows
+rng = sht.Rows(7)
+rng.Interior.ColorIndex = 6
+sht.Rows(8).Interior.ColorIndex = 8
+# Rows End
+
+
+
+#####Color Codes############
+
+ws.Cells(3,1).Interior.ColorIndex = x
+
+where x =
+          1 ==> Black
+          2 ==> White
+          3 ==> Red
+          4 ==> Green
+          5 ==> Blue
+          6 ==> Yellow
+          7 ==> Pink
+          8 ==> Cyan
+          9 ==> Brown
+          10 ==> Drk Green
+          11 ==> Drk Blue
+          12 ==> Drk Yellow
+          13 ==> Drk Pink
+          14 ==> Drk Cyan
+          15 ==> Light Gray
+          16 ==> Drk Gray
+          17 ==> Bluish Gray
+          18 ==> Majenta
+          19 ==> White
+          20 ==> 
+          21 ==> 

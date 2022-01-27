@@ -1,0 +1,18 @@
+Insert Row -->  expform_ws.Range("Total").Offset(-1, 0).EntireRow.Insert
+Delete row -->  fs.UsedRange.Offset(2).Columns(5).SpecialCells(4).EntireRow.Delete()
+			OR BELOW CODE
+		for i in range(lastrow, 2, -1):
+    		  if fs.Cells(i,5).Value != ""
+                     fs.Rows(i).EntireRow.Delete() 
+      
+backcolor cell
+specific color cell
+read cell color
+fill cell color
+
+
+# Rows
+rng = sht.Rows(7)
+rng.Interior.ColorIndex = 6
+sht.Rows(8).Interior.ColorIndex = 8
+# Rows End
