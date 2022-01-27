@@ -1,6 +1,7 @@
 # To add a new cell, type '# %%'
 # To add a new markdown cell, type '# %% [markdown]'
 # %%
+#Generating Template
 def getSectionHeader(row, isColHead, colStart):
     splitString = []
     sectionH = ""
